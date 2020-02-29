@@ -1,0 +1,53 @@
+manifest_version: 2019-07-28
+author: harvie
+description: InstallFest 2020
+arch: esp32
+version: 1.0
+
+filesystem:
+  - fs
+
+sources:
+  - src
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/rpc-common
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-service-ota
+  - origin: https://github.com/mongoose-os-libs/ota-http-server
+  - origin: https://github.com/mongoose-os-libs/dns-sd
+  - origin: https://github.com/mongoose-os-libs/provision
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/wifi-setup-web-ui
+  - origin: https://github.com/mongoose-os-libs/sntp
+  - origin: https://github.com/mongoose-os-libs/mqtt
+  - name: mujmodul
+
+config_schema:
+#  - ["wifi.ap.enable", true]
+#  - ["wifi.ap.ssid", "ESP32Fest_????"]
+#  - ["wifi.ap.pass", ""]
+#  - ["wifi.ap.hostname", "prednaska.esp"]
+#  - ["device.id", "prednaska.esp"]
+
+  - ["wifi.ap.enable", false]
+  - ["wifi.sta.enable", true]
+
+  - ["provision.stable_state", 0]
+  - ["provision.btn.pin", 0]
+  - ["provision.btn.pull_up", true]
+  - ["provision.btn.hold_ms", 3000]
+  - ["provision.led.pin", 2]
+
+  - ["sntp.enable", true]
+  - ["sntp.update_interval", 300]
+  - ["sys.tz_spec", "CET-1CEST,M3.5.0,M10.5.0/3"]
+  - ["dns_sd.enable", true]
+
+  - ["mqtt.enable", true]
+  - ["mqtt.server", "iot.siliconhill.cz"]
+  - ["debug.stdout_topic", "playground/installfest2020"]
+  - ["debug.stderr_topic", "playground/installfest2020"]
+# http://iot.siliconhill.cz/wall/#playground/installfest2020#

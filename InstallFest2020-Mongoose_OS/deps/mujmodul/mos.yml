@@ -1,0 +1,17 @@
+author: harvie
+description: Installfest 2020 modul
+type: lib
+version: 0.1
+
+platforms: [ esp32, esp8266 ]
+
+sources:
+  - src
+includes:
+  - src
+
+config_schema:
+  - ["mujmodul", "o", {title: "nastaveni mujmodulu"}]
+  - ["mujmodul.time", "i", 7000, {title: "casovy interval"}]
+
+manifest_version: 2019-07-28

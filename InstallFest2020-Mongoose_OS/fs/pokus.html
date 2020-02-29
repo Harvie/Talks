@@ -1,0 +1,54 @@
+<html5>
+<head>
+<meta charset="UTF-8">
+<title>RPC tester</title>
+<style>
+	textarea { width: 100%; height: 10em; }
+	* { background-color: black; color: white; }
+</style>
+</head>
+<body>
+
+<h1>RPC tester</h1>
+
+<textarea id="request">{}</textarea>
+<textarea id="response"></textarea>
+<input type="text" id="rpcurl" value="/RPC/RPC.List" dis>
+<button onclick="call_rpc()">CALL RPC</button> 
+
+
+<script type="text/javascript">
+	document.getElementById("response").innerHTML="here you will see the response"; 
+
+ function call_rpc() {
+	document.getElementById("response").innerHTML="processing RPC request..."; 
+	var jsonreq = document.getElementById("request").value;
+	console.log("Send: "+jsonreq);
+	//jsonreq = JSON.stringify(JSON.parse(jsonreq));
+	//console.log(jsonreq);
+    var apiUrl = document.getElementById("rpcurl").value;
+    fetch(apiUrl,
+      { method:"POST",
+  	headers: {
+    		'Accept': 'application/json, text/plain, */*',
+    		'Content-Type': 'application/json'
+  	},
+	body:jsonreq
+    }
+    ).then(response => {
+      return response.json();
+    }).then(data => {
+	var jsonres = JSON.stringify(data); 
+	console.log("Recv: "+jsonres);
+	document.getElementById("response").innerHTML=jsonres; 
+      // Work with JSON data here
+    }).catch(err => {
+	console.log("Fetch error");
+	document.getElementById("response").innerHTML="Fetch error"; 
+      // Do something for an error here
+    });
+}
+</script>
+
+</body>
+</html5>
