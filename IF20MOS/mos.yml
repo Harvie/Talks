@@ -26,20 +26,26 @@ libs:
   - name: mujmodul
 
 config_schema:
-#  - ["wifi.ap.enable", true]
-#  - ["wifi.ap.ssid", "ESP32Fest_????"]
-#  - ["wifi.ap.pass", ""]
-#  - ["wifi.ap.hostname", "prednaska.esp"]
-#  - ["device.id", "prednaska.esp"]
+  - ["wifi.ap.enable", true]
+  - ["wifi.ap.ssid", "ESP32Fest_????"]
+  - ["wifi.ap.pass", ""]
+  - ["wifi.ap.hostname", "prednaska.esp"]
+  - ["device.id", "prednaska.esp"]
 
-  - ["wifi.ap.enable", false]
-  - ["wifi.sta.enable", true]
+#  - ["wifi.ap.enable", false]
+#  - ["wifi.sta.enable", true]
+#  - ["wifi.sta.ssid", ""]
+#  - ["wifi.sta.pass", ""]
 
   - ["provision.stable_state", 0]
   - ["provision.btn.pin", 0]
   - ["provision.btn.pull_up", true]
   - ["provision.btn.hold_ms", 3000]
   - ["provision.led.pin", 2]
+#  - ["provision.btn.pin", 34]
+#  - ["provision.led.pin", 5]
+
+  - ["spadni", "b", false, {title: "vyvolej pad"}]
 
   - ["sntp.enable", true]
   - ["sntp.update_interval", 300]

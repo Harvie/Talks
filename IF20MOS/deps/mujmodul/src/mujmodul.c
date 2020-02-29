@@ -3,9 +3,9 @@
 #include "mgos_system.h"
 #include "mgos_time.h"
 #include "mgos_timers.h"
+#include "mgos_mqtt.h"
 
-
-static void mujmodul_timer_cb(void *buf) {
+static void mujmodul_timer_cb(void *arg) {
 
 	char buf[128];
 	time_t now;
@@ -13,6 +13,9 @@ static void mujmodul_timer_cb(void *buf) {
 	int result = mgos_strftime(buf, sizeof(buf), "%F %T", now);
 
 	LOG(LL_INFO,("Time is: %s", buf));
+
+	mgos_mqtt_pubf("playground/installfest2020/cas", 2, false,
+        "Cas je %s", buf);
 }
 
 bool mgos_mujmodul_init(void) {
